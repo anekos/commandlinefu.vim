@@ -1,13 +1,3 @@
-" api
-" Version: 0.0.1
-" Author: anekos
-" License: MIT
-
-if exists('g:loaded_api')
-  finish
-endif
-let g:loaded_api = 1
-
 let s:save_cpo = &cpo
 set cpo&vim
 
