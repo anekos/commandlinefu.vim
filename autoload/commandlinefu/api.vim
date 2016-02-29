@@ -12,7 +12,7 @@ let s:cache = {}
 
 function! commandlinefu#api#search(query) abort
   if has_key(s:cache, a:query)
-    return s:cache[a:query]
+    return copy(s:cache[a:query])
   endif
 
   let l:url = printf(
@@ -25,9 +25,9 @@ function! commandlinefu#api#search(query) abort
   let l:res = s:HTTP.get(l:url, {}, l:header)
   let l:json = s:JSON.decode(l:res.content)
 
-  let s:cache[a:query] = deepcopy(l:json)
+  let s:cache[a:query] = l:json
 
-  return l:json
+  return copy(l:json)
 endfunction
 
 
